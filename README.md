@@ -16,7 +16,7 @@ Um app desktop para Windows que encontra os projetos que você tem no disco, des
 (Node, Docker, Python, PHP) e deixa você iniciar/parar com um clique, ver os logs, a porta em que subiu e abrir
 direto no navegador.
 
-Os projetos são agrupados em **famílias** — uma família é simplesmente uma pasta (ex.: `Node`, `Pessoal`) e cada
+Os projetos são agrupados em **famílias** — uma família é simplesmente uma pasta (ex.: `Trabalho`, `Estudos`) e cada
 subpasta dela vira um projeto na barra lateral, no estilo pastas + sessões do Claude Code.
 
 ### Funcionalidades
@@ -32,6 +32,7 @@ subpasta dela vira um projeto na barra lateral, no estilo pastas + sessões do C
 - **Ocultar projetos/sub-projetos** que você não usa (o olho no topo da barra lateral mostra os ocultos).
 - **Bandeja do sistema**: fechar a janela mantém o app rodando na bandeja; "Sair" no menu da bandeja encerra o
   app **e todos os processos iniciados por ele** (nada fica órfão).
+- **Instância única**: abrir o app de novo só traz de volta a janela que já está rodando.
 - **Status** em cada item: 🟢 rodando · 🔴 terminou com erro · ⚪ parado.
 
 ## Estrutura de diretórios esperada
@@ -40,15 +41,15 @@ O app não exige uma pasta específica — você escolhe quais pastas são famí
 
 ```
 Projetos/                          ← (opcional) pasta raiz onde ficam as famílias
-├── Node/                          ← FAMÍLIA  (adicionada pelo botão +)
-│   ├── plataforma/                ← PROJETO sem marcador na raiz → procura um nível abaixo
-│   │   ├── nodeiot-front/         ←   sub-projeto (package.json com script "dev")
-│   │   └── nodeiotapp/            ←   sub-projeto (package.json)
-│   ├── workflow/                  ← PROJETO (docker-compose.yml)
+├── Trabalho/                      ← FAMÍLIA  (adicionada pelo botão +)
+│   ├── minha-loja/                ← PROJETO sem marcador na raiz → procura um nível abaixo
+│   │   ├── frontend/              ←   sub-projeto (package.json com script "dev")
+│   │   └── backend/               ←   sub-projeto (package.json)
+│   ├── servicos/                  ← PROJETO (docker-compose.yml)
 │   └── docs/                      ← aparece como "unknown" → configure ou oculte
-└── Pessoal/                       ← outra FAMÍLIA
-    ├── vaultguard-ui/             ← PROJETO (package.json)
-    ├── investment-hermes/         ← PROJETO (main.py / requirements.txt)
+└── Estudos/                       ← outra FAMÍLIA
+    ├── app-react/                 ← PROJETO (package.json)
+    ├── api-python/                ← PROJETO (main.py)
     └── site-php/                  ← PROJETO (composer.json + public/)
 ```
 
@@ -125,7 +126,7 @@ npm run build                                     # type-check + build do fronte
 ## Primeiro uso
 
 1. Abra o app e clique em **+** no topo da barra lateral.
-2. Escolha a pasta de uma família (ex.: `C:\Users\voce\Documents\Projetos\Node`).
+2. Escolha a pasta de uma família (ex.: `C:\Users\voce\Documents\Projetos\Trabalho`).
 3. Clique num projeto → ▶ para iniciar. Os logs aparecem na aba do comando e a porta aparece assim que o servidor
    anunciar a URL.
 4. Use **Abrir no navegador**, ■ para parar, **Configurar** para ajustar comandos.
@@ -169,7 +170,6 @@ sobrescrito em silêncio).
 - **Somente Windows** (usa `cmd`, `taskkill` e APIs do Windows para os processos).
 - A porta é descoberta **pelo log**: servidores que não imprimem a URL (comum no `docker compose`) precisam de uma
   URL fixa em **Configurar**.
-- Abrir o app de novo enquanto ele está na bandeja inicia uma segunda instância.
 - Não há terminal interativo (stdin) para os processos.
 
 ## Ícone
