@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#20232b"/><stop offset="1" stop-color="#121419"/>
+    </linearGradient>
+    <linearGradient id="urucum" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f28a4b"/><stop offset="1" stop-color="#c9431f"/>
+    </linearGradient>
+    <clipPath id="vane"><path d="M0,-235 C96,-170 112,20 0,165 C-112,20 -96,-170 0,-235 Z"/></clipPath>
+  </defs>
+  <rect x="40" y="40" width="944" height="944" rx="210" fill="url(#bg)"/>
+  <path d="M455.4,191.0 L468.5,130.5 A384,384 0 0 1 555.5,130.5 L568.6,191.0 A326,326 0 0 1 654.9,219.0 L654.9,219.0 L701.1,177.8 A384,384 0 0 1 771.4,228.9 L746.5,285.5 A326,326 0 0 1 799.8,359.0 L799.8,359.0 L861.4,352.8 A384,384 0 0 1 888.3,435.4 L834.8,466.6 A326,326 0 0 1 834.8,557.4 L834.8,557.4 L888.3,588.6 A384,384 0 0 1 861.4,671.2 L799.8,665.0 A326,326 0 0 1 746.5,738.5 L746.5,738.5 L771.4,795.1 A384,384 0 0 1 701.1,846.2 L654.9,805.0 A326,326 0 0 1 568.6,833.0 L568.6,833.0 L555.5,893.5 A384,384 0 0 1 468.5,893.5 L455.4,833.0 A326,326 0 0 1 369.1,805.0 L369.1,805.0 L322.9,846.2 A384,384 0 0 1 252.6,795.1 L277.5,738.5 A326,326 0 0 1 224.2,665.0 L224.2,665.0 L162.6,671.2 A384,384 0 0 1 135.7,588.6 L189.2,557.4 A326,326 0 0 1 189.2,466.6 L189.2,466.6 L135.7,435.4 A384,384 0 0 1 162.6,352.8 L224.2,359.0 A326,326 0 0 1 277.5,285.5 L277.5,285.5 L252.6,228.9 A384,384 0 0 1 322.9,177.8 L369.1,219.0 A326,326 0 0 1 455.4,191.0 Z" fill="url(#urucum)"/>
+  <circle cx="512" cy="512" r="246" fill="#16181e"/>
+  <circle cx="512" cy="512" r="246" fill="none" stroke="#f28a4b" stroke-opacity="0.25" stroke-width="6"/>
+  <g transform="translate(518 516) rotate(30)">
+    <path d="M0,-235 C96,-170 112,20 0,165 C-112,20 -96,-170 0,-235 Z" fill="#f3e5c8"/>
+    <rect x="-130" y="-240" width="260" height="95" fill="url(#urucum)" clip-path="url(#vane)"/>
+    <g clip-path="url(#vane)" fill="none" stroke="#1b1d23" stroke-width="18" stroke-linejoin="miter"><path d="M-120,-40 L0,-95 L120,-40" /><path d="M-120,30 L0,-25 L120,30" /><path d="M-120,100 L0,45 L120,100" /></g>
+    <path d="M0,-150 L0,150" stroke="#1b1d23" stroke-width="8" stroke-linecap="round"/>
+    <path d="M0,150 L0,215" stroke="#f3e5c8" stroke-width="14" stroke-linecap="round"/>
+  </g>
+</svg>
