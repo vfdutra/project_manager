@@ -22,7 +22,7 @@ pub fn detect(dir: &Path) -> Detected {
     if let Some((kind, cmd, stop)) = detect_one(dir) {
         return Detected { kind: kind.into(), commands: vec![spec(kind.into(), "", cmd, stop)] };
     }
-    // Monorepo-ish layout (e.g. plataforma/nodeiot-front + nodeiotapp): look one level down.
+    // Monorepo-ish layout (e.g. minha-loja/frontend + backend): look one level down.
     let mut kind = "unknown".to_string();
     let mut commands = vec![];
     for sub in subdirs(dir) {

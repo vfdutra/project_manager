@@ -127,7 +127,7 @@ Mensagem proposta: `chore: scaffold tauri 2 + react-ts app`
   - `pub fn subdirs(dir: &Path) -> Vec<PathBuf>` (ordenado, sem ocultas/`node_modules`)
   - `pub fn dir_name(p: &Path) -> String`
 
-Regras (primeira que casar, por pasta): compose (`docker compose up`, stop `docker compose stop`) → `package.json` com script `dev`/`start` (gerenciador pelo lockfile) → `artisan` → `composer.json`/`index.php` (`php -S localhost:8000 [-t public]`) → `manage.py` → `main.py`/`app.py`. Python usa `.venv\Scripts\python` ou `venv\Scripts\python` se existir. Se a raiz não casar nada, aplica as regras em cada subpasta (ex.: `plataforma/nodeiot-front`, `plataforma/nodeiotapp`), um comando por subpasta com `name` = `cwd` = nome da subpasta.
+Regras (primeira que casar, por pasta): compose (`docker compose up`, stop `docker compose stop`) → `package.json` com script `dev`/`start` (gerenciador pelo lockfile) → `artisan` → `composer.json`/`index.php` (`php -S localhost:8000 [-t public]`) → `manage.py` → `main.py`/`app.py`. Python usa `.venv\Scripts\python` ou `venv\Scripts\python` se existir. Se a raiz não casar nada, aplica as regras em cada subpasta (ex.: `minha-loja/frontend`, `minha-loja/backend`), um comando por subpasta com `name` = `cwd` = nome da subpasta.
 
 - [ ] **Step 1: Escrever os testes**
 
@@ -265,7 +265,7 @@ pub fn detect(dir: &Path) -> Detected {
     if let Some((kind, cmd, stop)) = detect_one(dir) {
         return Detected { kind: kind.into(), commands: vec![spec(kind.into(), "", cmd, stop)] };
     }
-    // Monorepo-ish layout (e.g. plataforma/nodeiot-front + nodeiotapp): look one level down.
+    // Monorepo-ish layout (e.g. minha-loja/frontend + backend): look one level down.
     let mut kind = "unknown".to_string();
     let mut commands = vec![];
     for sub in subdirs(dir) {
@@ -1684,12 +1684,12 @@ Expected: janela "Gerenciador de Projetos" abre, sidebar vazia com dica "Adicion
 
 - [ ] **Step 2: Roteiro de verificação** (marcar cada item)
 
-1. `+` → escolher `C:\Users\dutra\Documents\Projetos\Pessoal` → aparecem `Starfuse`, `claw-dev`, `footaxo`, …, com `vaultguard-ui` como `node`.
-2. `+` → `C:\Users\dutra\Documents\Projetos\Node` → `plataforma` mostra duas abas (`nodeiot-front`, `nodeiotapp`) se ambas tiverem marcadores; `workflow` aparece como `docker`.
-3. Selecionar um projeto Vite (ex.: `Pessoal/vaultguard-ui`) → **Iniciar** → aba de log enche, ponto verde na sidebar, `:5173` (ou a porta real) aparece na sidebar e "Porta N" no painel.
+1. `+` → escolher uma pasta de família → aparecem as subpastas, com os projetos Vite detectados como `node`.
+2. `+` → outra família → um projeto com front e back em subpastas mostra duas abas; um com `docker-compose.yml` aparece como `docker`.
+3. Selecionar um projeto Vite (qualquer um com `npm run dev` via Vite) → **Iniciar** → aba de log enche, ponto verde na sidebar, `:5173` (ou a porta real) aparece na sidebar e "Porta N" no painel.
 4. **Abrir no navegador** abre o navegador padrão na URL.
 5. **Parar** → processo morre (conferir em `netstat -ano | findstr :5173` que a porta liberou), ponto apaga.
-6. **Configurar** num projeto `unknown` (ex.: `Pessoal/investment-hermes`) → adicionar comando, salvar → fecha app e reabre → override persiste; "Restaurar detecção automática" volta ao detectado.
+6. **Configurar** num projeto `unknown` (ex.: uma pasta só com `requirements.txt`) → adicionar comando, salvar → fecha app e reabre → override persiste; "Restaurar detecção automática" volta ao detectado.
 7. Iniciar um projeto e **fechar a janela** → reabrir e checar com `netstat` que o servidor não ficou órfão.
 8. Fechar o app.
 
